@@ -15,143 +15,72 @@ body{
 
 /* HEADER */
 header{
-    position: relative;
     text-align:center;
     padding:30px 20px;
     background: linear-gradient(135deg,#ff6f61,#de425b);
     border-radius:0 0 50px 50px;
-    box-shadow:0 5px 15px rgba(0,0,0,.4);
 }
 header img{
     max-width:120px;
-    margin-bottom:10px;
     border-radius:50%;
     border:3px solid #fff;
-    transition: transform 0.5s;
 }
-header img:hover{
-    transform: rotate(10deg) scale(1.05);
-}
-header h1{
-    margin:5px 0;
-    font-size:2.2em;
-}
+header h1{margin:5px 0;font-size:2.2em;}
 
-/* ICONO AJUSTES (HAMBURGUESA) */
+/* ICONO AJUSTES */
 #iconoAjustes{
     position: fixed;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 1000;
-    width:35px;
-    height:30px;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
+    top:20px;
+    right:20px;
+    cursor:pointer;
+    z-index:1000;
 }
 #iconoAjustes span{
     display:block;
+    width:35px;
     height:5px;
-    width:100%;
     background:#ff9800;
+    margin:5px 0;
     border-radius:5px;
 }
 
 /* PANEL AJUSTES */
 #panelAjustes{
-    position: fixed;
-    top: 60px;
-    right: 20px;
+    position:fixed;
+    top:60px;
+    right:20px;
     background:#1e1e1e;
     padding:20px;
     border-radius:20px;
     width:320px;
-    max-height:80vh; /* Altura máxima */
-    overflow-y:auto;  /* Barra de scroll vertical */
-    box-shadow:0 5px 20px rgba(0,0,0,.6);
+    max-height:80vh;
+    overflow-y:auto;
     display:none;
     z-index:1000;
 }
-
-/* BOTON CERRAR PANEL */
-#panelAjustes #cerrarPanel{
-    background:red;
-    color:white;
-    border:none;
-    border-radius:50%;
-    width:28px;
-    height:28px;
-    font-weight:bold;
-    cursor:pointer;
-    float:right;
-    font-size:18px;
-    line-height:25px;
-    transition: transform 0.2s;
-}
-#panelAjustes #cerrarPanel:hover{
-    transform: rotate(90deg);
-}
-
-/* INPUTS Y BOTONES */
-#panelAjustes input[type="text"], #panelAjustes input[type="number"], #panelAjustes input[type="file"], #panelAjustes select{
+#panelAjustes input, #panelAjustes select{
     width:100%;
     margin-bottom:10px;
     padding:8px;
     border-radius:10px;
     border:none;
 }
-#panelAjustes button:not(#cerrarPanel){
+#panelAjustes button{
     width:100%;
     padding:10px;
     border:none;
     border-radius:25px;
     background:#25d366;
-    color:white;
+    color:#fff;
     font-weight:bold;
-    cursor:pointer;
     margin-bottom:10px;
 }
-#panelAjustes button:not(#cerrarPanel):hover{
-    background:#2ecc71;
-}
-
-/* BOTONES CONTACTO */
-.botones{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin:30px 0;
-}
-.botones a{
-    padding:12px 26px;
-    border-radius:50px;
-    color:#fff;
-    text-decoration:none;
-    font-weight:bold;
-    box-shadow:0 5px 15px rgba(0,0,0,.3);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.botones a:hover{
-    transform: translateY(-5px);
-    box-shadow:0 10px 20px rgba(0,0,0,.5);
-}
-.whatsapp{background:#25d366;}
-.email{background:#ff9800;}
-
-/* SECCIONES */
-section{
-    background: #1e1e1e;
-    border-radius:30px;
-    padding:25px;
-    margin:20px auto;
-    max-width:1100px;
-    box-shadow:0 10px 20px rgba(0,0,0,.5);
-}
-section h2{
-    color:#ff6f61;
-    margin-bottom:15px;
+#cerrarPanel{
+    background:red;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    float:right;
 }
 
 /* GALERIA */
@@ -161,64 +90,43 @@ section h2{
     gap:20px;
 }
 .cuadro{
+    position:relative;
     border-radius:20px;
     overflow:hidden;
-    background:linear-gradient(135deg,#de425b,#ff6f61);
-    transition: transform 0.3s;
-    position: relative;
 }
 .cuadro img{
     width:100%;
     display:block;
-    border-radius:20px;
-    cursor:pointer;
+    user-select:none;
+    -webkit-user-drag:none;
 }
 .cuadro p{
     text-align:center;
-    font-weight:bold;
-    padding:10px;
-    margin:0;
     background:#121212;
+    margin:0;
+    padding:10px;
+}
+
+/* MARCA DE AGUA */
+.marca-agua{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    background:rgba(0,0,0,0.4);
     color:#fff;
-}
-.cuadro:hover{
-    transform: scale(1.05);
-}
-
-/* CLASES */
-.clases{
-    text-align:center;
-    font-size:18px;
-    color:#fff;
-}
-
-/* PIE */
-footer{
-    text-align:center;
-    padding:20px;
-    font-size:14px;
-    background:linear-gradient(135deg,#de425b,#ff6f61);
-    border-radius:30px 30px 0 0;
-}
-
-/* ANIMACIONES */
-@keyframes fadeIn{
-    0%{opacity:0; transform: translateY(20px);}
-    100%{opacity:1; transform: translateY(0);}
-}
-section, .cuadro, .botones a{
-    animation: fadeIn 0.8s ease forwards;
+    padding:4px 8px;
+    font-size:13px;
+    border-radius:8px;
+    pointer-events:none;
+    text-shadow:0 0 5px #000;
 }
 
 /* PANTALLA EMERGENTE */
 #pantallaEmergente{
     display:none;
     position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: rgba(0,0,0,0.9);
+    inset:0;
+    background:rgba(0,0,0,0.9);
     justify-content:center;
     align-items:center;
     z-index:2000;
@@ -226,16 +134,12 @@ section, .cuadro, .botones a{
 #pantallaEmergente img{
     max-width:90%;
     max-height:80%;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.7);
 }
 #cerrarEmergente{
     position:absolute;
     top:20px;
     right:30px;
-    color:white;
     font-size:30px;
-    font-weight:bold;
     cursor:pointer;
 }
 </style>
@@ -246,215 +150,100 @@ section, .cuadro, .botones a{
 <header>
     <img id="logo">
     <h1 id="nombreSitio">TALLER DE ARTE LEON</h1>
-    <p>Arte • Creatividad • Inspiración</p>
 </header>
 
-<!-- ICONO AJUSTES -->
 <div id="iconoAjustes" onclick="abrirPanelAdmin()">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
 </div>
 
-<!-- PANEL AJUSTES -->
 <div id="panelAjustes">
     <button id="cerrarPanel" onclick="cerrarPanel()">✖</button>
     <h3>Administrador</h3>
 
-    <!-- Cambiar nombre -->
-    <input type="text" id="nuevoNombre" placeholder="Nuevo nombre del sitio">
+    <input type="text" id="nuevoNombre" placeholder="Nuevo nombre">
     <button onclick="cambiarNombre()">Actualizar Nombre</button>
 
-    <!-- Cambiar logo -->
     <input type="file" id="nuevoLogo" accept="image/*">
     <button onclick="cambiarLogo()">Actualizar Logo</button>
 
-    <!-- Agregar cuadro -->
     <input type="file" id="nuevoCuadro" accept="image/*">
-    <input type="number" id="precioCuadro" placeholder="Precio del cuadro">
+    <input type="number" id="precioCuadro" placeholder="Precio">
     <button onclick="subirCuadro()">Agregar Cuadro</button>
 
-    <!-- Eliminar cuadro -->
-    <select id="cuadrosEliminar">
-        <option value="">Selecciona un cuadro para eliminar</option>
-    </select>
+    <select id="cuadrosEliminar"></select>
     <button onclick="eliminarCuadro()">Eliminar Cuadro</button>
 
-    <!-- Cambiar horario -->
-    <input type="text" id="nuevoHorario" placeholder="Nuevo horario (Ej: Lunes a Viernes 5-7pm)">
-    <input type="number" id="nuevoCosto" placeholder="Nuevo costo por clase">
-    <button onclick="cambiarHorario()">Actualizar Horario</button>
+    <h4>Marca de Agua</h4>
+    <input type="text" id="textoMarcaAgua" placeholder="Firma o marca">
+    <button onclick="guardarMarcaAgua()">Guardar Marca de Agua</button>
 </div>
 
-<div class="contenedor">
+<section>
+    <h2>Cuadros en Venta</h2>
+    <div class="galeria" id="galeria"></div>
+</section>
 
-    <!-- BOTONES CONTACTO -->
-    <div class="botones">
-        <a class="whatsapp" href="https://wa.me/529621413834" target="_blank">📱 WhatsApp</a>
-        <a class="email" href="mailto:iglgfut465@gmail.com">✉️ Correo</a>
-    </div>
-
-    <!-- GALERIA -->
-    <section>
-        <h2>🖼️ Cuadros en Venta</h2>
-        <div class="galeria" id="galeria"></div>
-    </section>
-
-    <!-- CLASES -->
-    <section>
-        <h2>🎨 Clases de Arte</h2>
-        <div class="clases" id="infoClases">
-            <p id="textoHorario">Horario: Lunes a Viernes 4:00 pm – 6:00 pm</p>
-            <p id="textoCosto">Costo por clase: $50</p>
-        </div>
-    </section>
-
-</div>
-
-<footer>
-    © <span id="anio">2026</span> <span id="nombreFooter">Taller de Arte León</span>
-</footer>
-
-<!-- PANTALLA EMERGENTE CUADRO -->
 <div id="pantallaEmergente">
     <span id="cerrarEmergente">✖</span>
-    <img id="imagenEmergente" src="">
+    <img id="imagenEmergente">
 </div>
 
 <script>
-// CONTRASEÑA ADMIN
-const PASSWORD = "admin123";
+const PASSWORD="admin123";
+let marcaAgua = localStorage.getItem("marcaAgua") || "© Taller de Arte León";
+let cuadros = JSON.parse(localStorage.getItem("cuadros")) || [];
 
-// GALERIA
-let cuadros = JSON.parse(localStorage.getItem("cuadros")) || [
-    {img:'https://picsum.photos/300/200?random=1', precio:'$1200'},
-    {img:'https://picsum.photos/300/200?random=2', precio:'$950'},
-    {img:'https://picsum.photos/300/200?random=3', precio:'$750'}
-];
-
-// HORARIO
-let horario = localStorage.getItem("horario") || "Lunes a Viernes 4:00 pm – 6:00 pm";
-let costo = localStorage.getItem("costo") || 50;
-
-// MOSTRAR GALERIA
 function mostrarGaleria(){
-    const galeria = document.getElementById("galeria");
-    const select = document.getElementById("cuadrosEliminar");
-    galeria.innerHTML = "";
-    select.innerHTML = `<option value="">Selecciona un cuadro para eliminar</option>`;
-    cuadros.forEach((c,index)=>{
-        galeria.innerHTML += `
+    const g=document.getElementById("galeria");
+    const s=document.getElementById("cuadrosEliminar");
+    g.innerHTML="";
+    s.innerHTML="";
+    cuadros.forEach((c,i)=>{
+        g.innerHTML+=`
         <div class="cuadro">
-            <img src="${c.img}" onclick="abrirEmergente('${c.img}')">
+            <img src="${c.img}" onclick="abrirEmergente('${c.img}')" oncontextmenu="return false">
+            <div class="marca-agua">${marcaAgua}</div>
             <p>${c.precio}</p>
         </div>`;
-        select.innerHTML += `<option value="${index}">Cuadro ${index+1} - ${c.precio}</option>`;
+        s.innerHTML+=`<option value="${i}">Cuadro ${i+1}</option>`;
     });
-    localStorage.setItem("cuadros", JSON.stringify(cuadros));
+    localStorage.setItem("cuadros",JSON.stringify(cuadros));
 }
 
-// ABRIR PANEL ADMINISTRADOR
-function abrirPanelAdmin(){
-    const pass = prompt("Ingrese contraseña de administrador:");
-    if(pass === PASSWORD){
-        document.getElementById("panelAjustes").style.display = "block";
-    } else {
-        alert("Contraseña incorrecta");
-    }
-}
-
-// CERRAR PANEL
-function cerrarPanel(){
-    document.getElementById("panelAjustes").style.display = "none";
-}
-
-// Cambiar logo
-function cambiarLogo(){
-    const input = document.getElementById("nuevoLogo");
-    if(!input.files[0]) return alert("Seleccione una imagen");
-    const reader = new FileReader();
-    reader.onload = ()=>{
-        localStorage.setItem("logo", reader.result);
-        document.getElementById("logo").src = reader.result;
-        input.value = "";
-        alert("Logo actualizado");
-    };
-    reader.readAsDataURL(input.files[0]);
-}
-
-// Cambiar nombre del sitio
-function cambiarNombre(){
-    const nombre = document.getElementById("nuevoNombre").value.trim();
-    if(!nombre) return alert("Ingrese un nombre");
-    document.getElementById("nombreSitio").innerText = nombre;
-    document.getElementById("nombreFooter").innerText = nombre;
-    localStorage.setItem("nombreSitio", nombre);
-    alert("Nombre del sitio actualizado");
-}
-
-// Subir cuadro con precio
-function subirCuadro(){
-    const input = document.getElementById("nuevoCuadro");
-    const precio = document.getElementById("precioCuadro").value.trim();
-    if(!input.files[0]) return alert("Seleccione una imagen");
-    if(!precio) return alert("Ingrese un precio");
-    const reader = new FileReader();
-    reader.onload = ()=>{
-        cuadros.push({img: reader.result, precio:`$${precio}`});
-        mostrarGaleria();
-        input.value = "";
-        document.getElementById("precioCuadro").value = "";
-    };
-    reader.readAsDataURL(input.files[0]);
-}
-
-// Eliminar cuadro
-function eliminarCuadro(){
-    const idx = document.getElementById("cuadrosEliminar").value;
-    if(idx === "") return alert("Seleccione un cuadro para eliminar");
-    cuadros.splice(idx,1);
+function guardarMarcaAgua(){
+    const t=document.getElementById("textoMarcaAgua").value.trim();
+    if(!t) return alert("Escriba un texto");
+    marcaAgua=t;
+    localStorage.setItem("marcaAgua",t);
     mostrarGaleria();
-    alert("Cuadro eliminado");
 }
 
-// Cambiar horario y costo
-function cambiarHorario(){
-    const h = document.getElementById("nuevoHorario").value.trim();
-    const c = document.getElementById("nuevoCosto").value.trim();
-    if(h) {
-        horario = h;
-        localStorage.setItem("horario", horario);
-        document.getElementById("textoHorario").innerText = "Horario: "+horario;
-    }
-    if(c){
-        costo = c;
-        localStorage.setItem("costo", costo);
-        document.getElementById("textoCosto").innerText = "Costo por clase: $"+costo;
-    }
-    alert("Horario y costo actualizados");
+function abrirPanelAdmin(){
+    if(prompt("Contraseña:")===PASSWORD)
+        panelAjustes.style.display="block";
+}
+function cerrarPanel(){panelAjustes.style.display="none";}
+
+function subirCuadro(){
+    const f=nuevoCuadro.files[0];
+    if(!f) return;
+    const r=new FileReader();
+    r.onload=()=>{cuadros.push({img:r.result,precio:"$"+precioCuadro.value});mostrarGaleria();}
+    r.readAsDataURL(f);
 }
 
-// ABRIR PANTALLA EMERGENTE CUADRO
+function eliminarCuadro(){
+    cuadros.splice(cuadrosEliminar.value,1);
+    mostrarGaleria();
+}
+
 function abrirEmergente(src){
-    document.getElementById("imagenEmergente").src = src;
-    document.getElementById("pantallaEmergente").style.display = "flex";
+    imagenEmergente.src=src;
+    pantallaEmergente.style.display="flex";
 }
+cerrarEmergente.onclick=()=>pantallaEmergente.style.display="none";
 
-// CERRAR PANTALLA EMERGENTE
-document.getElementById("cerrarEmergente").onclick = function(){
-    document.getElementById("pantallaEmergente").style.display = "none";
-};
-
-// Cargar datos iniciales
-document.getElementById("logo").src = localStorage.getItem("logo") || 'https://picsum.photos/100';
-const nombreGuardado = localStorage.getItem("nombreSitio");
-if(nombreGuardado){
-    document.getElementById("nombreSitio").innerText = nombreGuardado;
-    document.getElementById("nombreFooter").innerText = nombreGuardado;
-}
-document.getElementById("anio").innerText = new Date().getFullYear();
-document.getElementById("textoHorario").innerText = "Horario: " + horario;
-document.getElementById("textoCosto").innerText = "Costo por clase: $" + costo;
+document.getElementById("textoMarcaAgua").value=marcaAgua;
 mostrarGaleria();
 </script>
 
