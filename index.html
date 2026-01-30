@@ -110,15 +110,23 @@ header h1{margin:5px 0;font-size:2.2em;}
 /* MARCA DE AGUA */
 .marca-agua{
     position:absolute;
-    bottom:10px;
-    right:10px;
     background:rgba(0,0,0,0.4);
     color:#fff;
     padding:4px 8px;
-    font-size:13px;
     border-radius:8px;
     pointer-events:none;
     text-shadow:0 0 5px #000;
+}
+
+/* POSICIONES */
+.marca-agua.top-left{top:10px;left:10px;}
+.marca-agua.top-right{top:10px;right:10px;}
+.marca-agua.bottom-left{bottom:10px;left:10px;}
+.marca-agua.bottom-right{bottom:10px;right:10px;}
+.marca-agua.center{
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
 }
 
 /* PANTALLA EMERGENTE */
@@ -175,6 +183,23 @@ header h1{margin:5px 0;font-size:2.2em;}
 
     <h4>Marca de Agua</h4>
     <input type="text" id="textoMarcaAgua" placeholder="Firma o marca">
+
+    <label><input type="checkbox" id="activarMarca"> Activar marca</label>
+
+    <select id="posicionMarca">
+        <option value="bottom-right">Abajo derecha</option>
+        <option value="bottom-left">Abajo izquierda</option>
+        <option value="top-right">Arriba derecha</option>
+        <option value="top-left">Arriba izquierda</option>
+        <option value="center">Centro</option>
+    </select>
+
+    <label>Tamaño</label>
+    <input type="range" id="tamanoMarca" min="10" max="30">
+
+    <label>Opacidad</label>
+    <input type="range" id="opacidadMarca" min="0.1" max="1" step="0.1">
+
     <button onclick="guardarMarcaAgua()">Guardar Marca de Agua</button>
 </div>
 
@@ -190,19 +215,31 @@ header h1{margin:5px 0;font-size:2.2em;}
 
 <script>
 const PASSWORD="admin123";
+
 let marcaAgua = localStorage.getItem("marcaAgua") || "© Taller de Arte León";
+let configMarca = JSON.parse(localStorage.getItem("configMarca")) || {
+    activa:true,
+    posicion:"bottom-right",
+    tamano:13,
+    opacidad:0.4
+};
+
 let cuadros = JSON.parse(localStorage.getItem("cuadros")) || [];
 
 function mostrarGaleria(){
-    const g=document.getElementById("galeria");
-    const s=document.getElementById("cuadrosEliminar");
+    const g=galeria;
+    const s=cuadrosEliminar;
     g.innerHTML="";
     s.innerHTML="";
     cuadros.forEach((c,i)=>{
         g.innerHTML+=`
         <div class="cuadro">
             <img src="${c.img}" onclick="abrirEmergente('${c.img}')" oncontextmenu="return false">
-            <div class="marca-agua">${marcaAgua}</div>
+            ${configMarca.activa ? `
+            <div class="marca-agua ${configMarca.posicion}"
+            style="font-size:${configMarca.tamano}px;opacity:${configMarca.opacidad};">
+            ${marcaAgua}
+            </div>` : ""}
             <p>${c.precio}</p>
         </div>`;
         s.innerHTML+=`<option value="${i}">Cuadro ${i+1}</option>`;
@@ -211,10 +248,15 @@ function mostrarGaleria(){
 }
 
 function guardarMarcaAgua(){
-    const t=document.getElementById("textoMarcaAgua").value.trim();
-    if(!t) return alert("Escriba un texto");
-    marcaAgua=t;
-    localStorage.setItem("marcaAgua",t);
+    marcaAgua = textoMarcaAgua.value.trim() || marcaAgua;
+    configMarca = {
+        activa: activarMarca.checked,
+        posicion: posicionMarca.value,
+        tamano: tamanoMarca.value,
+        opacidad: opacidadMarca.value
+    };
+    localStorage.setItem("marcaAgua",marcaAgua);
+    localStorage.setItem("configMarca",JSON.stringify(configMarca));
     mostrarGaleria();
 }
 
@@ -243,7 +285,13 @@ function abrirEmergente(src){
 }
 cerrarEmergente.onclick=()=>pantallaEmergente.style.display="none";
 
-document.getElementById("textoMarcaAgua").value=marcaAgua;
+/* CARGAR AJUSTES */
+textoMarcaAgua.value = marcaAgua;
+activarMarca.checked = configMarca.activa;
+posicionMarca.value = configMarca.posicion;
+tamanoMarca.value = configMarca.tamano;
+opacidadMarca.value = configMarca.opacidad;
+
 mostrarGaleria();
 </script>
 
