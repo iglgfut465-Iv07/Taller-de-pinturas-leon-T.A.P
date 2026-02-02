@@ -1,4 +1,33 @@
-/* CONTACTO Y REDES */
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>TALLER DE ARTE LEON</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:#121212;
+    color:#fff;
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    padding:30px 20px;
+    background: linear-gradient(135deg,#ff6f61,#de425b);
+    border-radius:0 0 50px 50px;
+}
+header img{
+    max-width:120px;
+    border-radius:50%;
+    border:3px solid #fff;
+}
+header h1{margin:5px 0;font-size:2.2em;}
+
+/* 👉 CONTACTO Y REDES (AGREGADO) */
 .contacto{
     margin-top:10px;
     display:flex;
@@ -7,7 +36,6 @@
     flex-wrap:wrap;
     font-size:0.95em;
 }
-
 .contacto a{
     color:#fff;
     text-decoration:none;
@@ -16,12 +44,154 @@
     background:rgba(0,0,0,0.25);
     transition:0.3s;
 }
-
-.contacto a:hover{
-    transform:scale(1.05);
-}
-
-.social.fb{ background:#1877f2; }
-.social.ig{ 
+.contacto a:hover{transform:scale(1.05);}
+.social.fb{background:#1877f2;}
+.social.ig{
     background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
 }
+
+/* ICONO AJUSTES */
+#iconoAjustes{
+    position: fixed;
+    top:20px;
+    right:20px;
+    cursor:pointer;
+    z-index:1000;
+}
+#iconoAjustes span{
+    display:block;
+    width:35px;
+    height:5px;
+    background:#ff9800;
+    margin:5px 0;
+    border-radius:5px;
+}
+
+/* PANEL AJUSTES */
+#panelAjustes{
+    position:fixed;
+    top:60px;
+    right:20px;
+    background:#1e1e1e;
+    padding:20px;
+    border-radius:20px;
+    width:320px;
+    max-height:80vh;
+    overflow-y:auto;
+    display:none;
+    z-index:1000;
+}
+#panelAjustes input, #panelAjustes select{
+    width:100%;
+    margin-bottom:10px;
+    padding:8px;
+    border-radius:10px;
+    border:none;
+}
+#panelAjustes button{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:25px;
+    background:#25d366;
+    color:#fff;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+#cerrarPanel{
+    background:red;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    float:right;
+}
+
+/* GALERIA */
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+.cuadro{
+    position:relative;
+    border-radius:20px;
+    overflow:hidden;
+}
+.cuadro img{
+    width:100%;
+    display:block;
+    user-select:none;
+    -webkit-user-drag:none;
+}
+.cuadro p{
+    text-align:center;
+    background:#121212;
+    margin:0;
+    padding:10px;
+}
+
+/* MARCA DE AGUA */
+.marca-agua{
+    position:absolute;
+    background:rgba(0,0,0,0.4);
+    color:#fff;
+    padding:4px 8px;
+    border-radius:8px;
+    pointer-events:none;
+    text-shadow:0 0 5px #000;
+}
+
+/* POSICIONES */
+.marca-agua.top-left{top:10px;left:10px;}
+.marca-agua.top-right{top:10px;right:10px;}
+.marca-agua.bottom-left{bottom:10px;left:10px;}
+.marca-agua.bottom-right{bottom:10px;right:10px;}
+.marca-agua.center{
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+/* PANTALLA EMERGENTE */
+#pantallaEmergente{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+}
+#pantallaEmergente img{
+    max-width:90%;
+    max-height:80%;
+}
+#cerrarEmergente{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:30px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img id="logo">
+    <h1 id="nombreSitio">TALLER DE ARTE LEON</h1>
+
+    <!-- 👉 CORREO + FACEBOOK + INSTAGRAM (AGREGADO) -->
+    <div class="contacto">
+        <a href="mailto:tucorreo@gmail.com">📧 tucorreo@gmail.com</a>
+        <a href="https://www.facebook.com/TuPagina" target="_blank" class="social fb">Facebook</a>
+        <a href="https://www.instagram.com/TuCuenta" target="_blank" class="social ig">Instagram</a>
+    </div>
+</header>
+
+<!-- TODO LO DEMÁS SIGUE IGUAL -->
+<!-- tu código JS y HTML restante sin cambios -->
+
+</body>
+</html>
